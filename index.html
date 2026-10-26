@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<meta name="description" content="A little apology and a whole lot of love, made for Potato by Mayank.">
+<title>For Potato ♡</title>
+<style>
+:root{--pink:#ff6f9f;--rose:#ff477e;--soft:#fff0f5;--cream:#fffaf5;--ink:#583344;--muted:#9b7183;--line:#ffd4e2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#fff3f7 0%,#fffaf7 45%,#fff0f5 100%);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,sans-serif;overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{width:min(100% - 30px,760px);margin:auto}
+.hero{min-height:92svh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:54px 0 42px;isolation:isolate}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);z-index:-1;opacity:.65}
+.hero:before{width:230px;height:230px;background:#ffe0eb;top:9%;left:-110px}
+.hero:after{width:180px;height:180px;background:#ffe9d9;bottom:9%;right:-80px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:.83rem;color:#b45d7d;box-shadow:0 8px 24px #e98eae1c}
+h1{font-size:clamp(3.2rem,15vw,6.6rem);line-height:.94;letter-spacing:-.07em;margin:23px 0 15px;color:#ed4f86}
+h1 span{display:block;color:#704258;font-size:.44em;letter-spacing:-.035em;margin-top:14px}
+.lead{font-size:clamp(1rem,3.8vw,1.2rem);line-height:1.7;max-width:520px;margin:0 auto;color:#8b6073}
+.primary,.secondary{border:0;border-radius:999px;padding:14px 21px;font-weight:800;transition:transform .2s,box-shadow .2s}
+.primary{background:linear-gradient(135deg,#ff75a5,#ff4f87);color:white;box-shadow:0 10px 22px #f15e9338}
+.secondary{background:#fff;color:#a54f72;border:1px solid var(--line)}
+.primary:hover,.secondary:hover{transform:translateY(-2px)}
+.hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.scroll-note{margin-top:35px;color:#b58a9b;font-size:.8rem}
+.heart-orbit{font-size:2rem;animation:float 3s ease-in-out infinite;display:inline-block;margin-top:22px}
+section{padding:30px 0 52px}
+.section-kicker{text-align:center;text-transform:uppercase;letter-spacing:.16em;color:#d66b91;font-size:.72rem;font-weight:900}
+h2{text-align:center;font-size:clamp(1.8rem,7vw,2.8rem);letter-spacing:-.045em;margin:8px 0 12px}
+.section-intro{text-align:center;color:var(--muted);line-height:1.65;max-width:540px;margin:0 auto 25px}
+.paper{background:#fffdfc;border:1px solid #ffe0e9;border-radius:25px;padding:23px;box-shadow:0 18px 45px #bd668019}
+.letter-card{max-width:570px;margin:auto;text-align:center;position:relative;overflow:hidden}
+.envelope{width:min(100%,340px);height:205px;margin:18px auto 14px;position:relative;perspective:800px;cursor:pointer;outline:none}
+.env-body{position:absolute;inset:22px 0 0;background:#ffc5d9;border-radius:13px;box-shadow:0 12px 25px #e77c9e30;overflow:hidden}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.env-body:before{left:0;border-width:100px 170px 0 0;border-color:#ffadca transparent transparent transparent}
+.env-body:after{right:0;border-width:100px 0 0 170px;border-color:#ffbad2 transparent transparent transparent}
+.flap{position:absolute;left:0;top:22px;width:0;height:0;border-left:170px solid transparent;border-right:170px solid transparent;border-top:112px solid #ff8fb5;transform-origin:top;transition:transform .65s ease;z-index:4;filter:drop-shadow(0 4px 2px #d95e8a25)}
+.seal{position:absolute;z-index:5;left:50%;top:94px;transform:translateX(-50%);font-size:2rem;transition:opacity .25s}
+.letter-peek{position:absolute;z-index:2;left:7%;width:86%;bottom:10px;height:135px;background:#fffaf8;border-radius:9px;padding:14px;color:#b95b7e;font-size:.9rem;box-shadow:0 3px 10px #b94b771c;transition:transform .65s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .letter-peek{transform:translateY(-63px);z-index:5}
+.envelope.open .seal{opacity:0}
+.tap-hint{font-size:.82rem;color:#b27d92}
+.letter-content{display:none;text-align:left;line-height:1.8;margin-top:24px;animation:fadeUp .5s both}
+.letter-content.show{display:block}
+.letter-content p{margin:0 0 13px}
+.signature{text-align:right;font-weight:800;color:#e95388;margin-top:18px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.photo-tile{aspect-ratio:3/4;border-radius:17px;background:linear-gradient(145deg,#ffe2eb,#fff4e9);border:1px dashed #f4a9c3;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;position:relative;color:#b97591;padding:8px;font-size:.85rem}
+.photo-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.photo-tile .placeholder{padding:5px}
+.photo-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:17px 0 0}
+.upload-label{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 16px;color:#a34f72;font-weight:800;cursor:pointer}
+.upload-label input{display:none}
+.tiny-note{text-align:center;color:#b18a9b;font-size:.78rem;line-height:1.6;margin-top:12px}
+.music-card{display:flex;align-items:center;gap:15px;max-width:510px;margin:auto}
+.disc{flex:0 0 66px;width:66px;height:66px;border-radius:50%;background:repeating-radial-gradient(circle,#513846 0 3px,#6c4a5c 4px 6px);display:grid;place-items:center;color:white;font-size:1.4rem;border:5px solid #ffd5e3}
+.disc.playing{animation:spin 4s linear infinite}
+.music-copy{flex:1}
+.music-copy strong{display:block}
+.music-copy small{color:var(--muted);display:block;margin-top:4px;line-height:1.45}
+.music-toggle{border:0;background:#ffe1eb;color:#a94c70;border-radius:50%;width:45px;height:45px;font-size:1.1rem}
+.surprise-box{text-align:center;max-width:560px;margin:auto}
+.surprise-heart{font-size:3rem;display:block;margin-bottom:8px}
+.hidden-message{display:none;margin-top:20px;line-height:1.8;animation:fadeUp .5s both}
+.hidden-message.show{display:block}
+.final-note{text-align:center;padding:45px 0 55px;color:#b27c91;font-size:.85rem}
+.floating-heart{position:fixed;bottom:-35px;pointer-events:none;z-index:20;animation:rise linear forwards;opacity:.75}
+.confetti-heart{position:fixed;top:-30px;z-index:30;pointer-events:none;animation:fall 2.8s ease-in forwards}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-12px) rotate(7deg)}}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.paper{padding:17px;border-radius:20px}.gallery-grid{gap:7px}.photo-tile{border-radius:12px;font-size:.75rem}.music-card{gap:10px}.disc{width:54px;height:54px;flex-basis:54px}.envelope{transform:scale(.9);transform-origin:center top;margin-bottom:-5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">♡ a tiny website, with a big heart ♡</div>
+    <h1>Hey, Potato<span>this little corner of the internet is just for you</span></h1>
+    <p class="lead">I made you something small to say something that matters a lot: <strong>I'm sorry, and I want to do better.</strong></p>
+    <div class="heart-orbit" aria-hidden="true">💗</div>
+    <div class="hero-actions">
+      <button class="primary" onclick="document.querySelector('#letter').scrollIntoView({behavior:'smooth'})">Open your letter 💌</button>
+      <button class="secondary" onclick="burstHearts()">A little love attack ✨</button>
+    </div>
+    <div class="scroll-note">made with love by Mayank · scroll for your surprise ↓</div>
+  </div>
+</header>
+
+<main>
+<section id="letter">
+  <div class="wrap">
+    <div class="section-kicker">from my heart to yours</div>
+    <h2>Your little love letter 💌</h2>
+    <p class="section-intro">Tap the envelope. I tucked a few honest words inside.</p>
+    <div class="paper letter-card">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the love letter" onclick="toggleLetter()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLetter()}">
+        <div class="env-body"></div><div class="letter-peek">For my favorite person…<br><span style="font-size:1.3rem">♡</span></div><div class="flap"></div><div class="seal">💗</div>
+      </div>
+      <div class="tap-hint" id="tapHint">Tap to open your letter</div>
+      <div class="letter-content" id="letterContent">
+        <p>My Potato,</p>
+        <p>I'm sorry for the moments when I hurt you, made you feel unheard, or didn't show up the way you needed me to. You deserve patience, care, honesty, and love that you can feel—not just words that you hear.</p>
+        <p>I can't promise I'll be perfect, but I can promise to listen better, own my mistakes, and keep working on myself. I want my actions to make you feel loved and valued, especially when things are difficult.</p>
+        <p>You matter to me more than my pride ever should. I don't expect one message to fix everything or ask you to stop feeling what you feel. I just want to understand you, make things right where I can, and show you—one day at a time—that I mean this.</p>
+        <p>Thank you for being you, Potato. I love you, and I want to keep choosing us with kindness, effort, and a little more wisdom every day. 💗</p>
+        <div class="signature">Always yours,<br>Mayank ♡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="memories">
+  <div class="wrap">
+    <div class="section-kicker">our little world</div>
+    <h2>Memories with you 📸</h2>
+    <p class="section-intro">These spaces are waiting for your favorite moments. Add photos from your phone—they stay on your device and aren't uploaded anywhere.</p>
+    <div class="paper">
+      <div class="gallery-grid" id="gallery">
+        <div class="photo-tile"><div class="placeholder">🌷<br>Our favorite memory</div></div>
+        <div class="photo-tile"><div class="placeholder">🧸<br>Your cutest smile</div></div>
+        <div class="photo-tile"><div class="placeholder">🌙<br>A moment I replay</div></div>
+      </div>
+      <div class="photo-controls">
+        <label class="upload-label">＋ Add our photos<input id="photoUpload" type="file" accept="image/*" multiple></label>
+        <button class="secondary" onclick="resetGallery()">Reset gallery</button>
+      </div>
+      <div class="tiny-note">Tip: choose up to 3–6 photos for a lovely little scrapbook. Photos you add here are local to this browser session.</div>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="wrap">
+    <div class="section-kicker">a little melody</div>
+    <h2>A tiny tune for you 🎵</h2>
+    <p class="section-intro">Press play for a soft, original little melody made with your page. No music files or subscriptions needed.</p>
+    <div class="paper music-card">
+      <div class="disc" id="disc">♫</div>
+      <div class="music-copy"><strong>Potato's little love tune</strong><small id="musicStatus">A tiny melody, made just for this moment</small></div>
+      <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="Play or pause music">▶</button>
+    </div>
+    <p class="tiny-note">Your phone may require a tap before audio can play. Use the button again to stop the tune.</p>
+  </div>
+</section>
+
+<section id="surprise">
+  <div class="wrap">
+    <div class="section-kicker">one last little thing</div>
+    <h2>Ready for your surprise? 🎁</h2>
+    <p class="section-intro">This button is hiding a tiny reminder for you.</p>
+    <div class="paper surprise-box">
+      <span class="surprise-heart">💝</span>
+      <p style="line-height:1.7;margin:0 0 18px">Potato, whenever you're ready… tap below.</p>
+      <button class="primary" onclick="revealSurprise()">Open your surprise ✨</button>
+      <div class="hidden-message" id="hiddenMessage">
+        <h2 style="font-size:1.7rem;margin:5px 0 12px">You are loved. Always. 💗</h2>
+        <p>I'm not asking for a perfect story. I'm asking for the chance to write a kinder next chapter—with more listening, more laughter, more hugs, and more effort from me.</p>
+        <p><strong>I'm sorry, Potato. I love you. — Mayank 🥹❤️</strong></p>
+        <button class="secondary" onclick="burstHearts()">Send another love attack 💕</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="final-note">made gently, with love · Mayank ♡ Potato<br><span style="font-size:.75rem">No grand gestures can replace care—but this is a little start.</span></footer>
+
+<script>
+let opened=false, audioCtx=null, musicTimer=null, noteIndex=0, playing=false;
+function toggleLetter(){
+  opened=!opened;
+  document.getElementById('envelope').classList.toggle('open',opened);
+  document.getElementById('letterContent').classList.toggle('show',opened);
+  document.getElementById('tapHint').textContent=opened?'Your letter is open 💗':'Tap to open your letter';
+  if(opened) setTimeout(()=>document.getElementById('letterContent').scrollIntoView({behavior:'smooth',block:'nearest'}),300);
+}
+function spawnHeart(){
+  const h=document.createElement('span');h.className='floating-heart';
+  h.textContent=['💗','💕','💖','💘','♡','🌸'][Math.floor(Math.random()*6)];
+  h.style.left=(Math.random()*95)+'vw';h.style.fontSize=(16+Math.random()*24)+'px';
+  h.style.animationDuration=(4+Math.random()*4)+'s';document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8500);
+}
+let heartLoop=setInterval(spawnHeart,1200);
+function burstHearts(){
+  for(let i=0;i<28;i++)setTimeout(()=>{
+    const h=document.createElement('span');h.className='confetti-heart';h.textContent=['💗','💖','💕','🌷','✨'][Math.floor(Math.random()*5)];
+    h.style.left=Math.random()*100+'vw';h.style.fontSize=(18+Math.random()*24)+'px';h.style.animationDuration=(1.8+Math.random()*2)+'s';
+    document.body.appendChild(h);setTimeout(()=>h.remove(),4200);
+  },i*45);
+}
+const photoUpload=document.getElementById('photoUpload');
+photoUpload.addEventListener('change',e=>{
+  const files=Array.from(e.target.files||[]).filter(f=>f.type.startsWith('image/')).slice(0,9);
+  if(!files.length)return;
+  const gallery=document.getElementById('gallery');gallery.innerHTML='';
+  files.forEach(file=>{
+    const tile=document.createElement('div');tile.className='photo-tile';
+    const img=document.createElement('img');img.alt='A memory with Potato';img.src=URL.createObjectURL(file);
+    tile.appendChild(img);gallery.appendChild(tile);
+  });
+});
+function resetGallery(){
+  document.getElementById('gallery').innerHTML='<div class="photo-tile"><div class="placeholder">🌷<br>Our favorite memory</div></div><div class="photo-tile"><div class="placeholder">🧸<br>Your cutest smile</div></div><div class="photo-tile"><div class="placeholder">🌙<br>A moment I replay</div></div>';
+  photoUpload.value='';
+}
+function revealSurprise(){
+  document.getElementById('hiddenMessage').classList.add('show');
+  burstHearts();
+}
+function toggleMusic(){
+  if(playing){stopMusic();return}
+  try{
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContext){document.getElementById('musicStatus').textContent='Audio is not supported by this browser.';return}
+    audioCtx=audioCtx||new AudioContext();audioCtx.resume();
+    playing=true;document.getElementById('musicToggle').textContent='Ⅱ';
+    document.getElementById('disc').classList.add('playing');
+    document.getElementById('musicStatus').textContent='Playing a soft little tune… tap pause to stop';
+    const melody=[523.25,659.25,783.99,659.25,587.33,698.46,659.25,523.25,493.88,587.33,659.25,587.33,523.25,392.00];
+    noteIndex=0;
+    const playNext=()=>{
+      if(!playing||!audioCtx)return;
+      const now=audioCtx.currentTime;
+      const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+      osc.type='sine';osc.frequency.value=melody[noteIndex%melody.length];
+      gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.09,now+.035);gain.gain.exponentialRampToValueAtTime(.0001,now+.36);
+      osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.38);
+      noteIndex++;musicTimer=setTimeout(playNext,430);
+    };
+    playNext();
+  }catch(e){document.getElementById('musicStatus').textContent='Tap play again to enable audio.'}
+}
+function stopMusic(){
+  playing=false;clearTimeout(musicTimer);
+  document.getElementById('musicToggle').textContent='▶';
+  document.getElementById('disc').classList.remove('playing');
+  document.getElementById('musicStatus').textContent='Paused. Your tiny tune will be here when you need it.';
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stopMusic()});
+</script>
+</body>
+</html>
